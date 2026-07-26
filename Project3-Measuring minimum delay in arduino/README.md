@@ -13,7 +13,7 @@
 You can copy the requirements to the AI agent, or code on your own.
 If using the AI agent, please write below what changes were done compared to the original Blink code: Is there a difference in the code structure? What variables and function if any were added?
 
-- Save Blink example as BlinkWithVariableDelay.ino in this folder
+- Save Blink example as g.ino in this folder
 - Use a variable to change built in led (13) to grove led (4)
 - Use a variable to change delay to 1 ms
 
@@ -56,4 +56,5 @@ run code:
 
 Paste screenshots below.
 Comparison of AI changes if any:
-![alt text](<צילום מסך 2026-07-12 132359.png>)
+Wasn't able to get 1usec cycles 
+![1ms screenshot](<1ms screenshot.png>)![1usec screenshot](<1usec screenshot.png>)
