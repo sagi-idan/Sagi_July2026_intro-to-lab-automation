@@ -21,4 +21,5 @@
  - no need to commit anything in this project
 
 ## Results
-- LED blinks when: 
+- LED blinks when: turns on and off in one sec cycles 
+- changed it to the big red led on pin 4
