@@ -29,7 +29,7 @@
 - pressure value:
 - led blinks when:
 - led is constant when:
-- buzzer plays when: 
+- buzzer plays when: ??
 
 ## Answers:
 - pressure value: 100411
