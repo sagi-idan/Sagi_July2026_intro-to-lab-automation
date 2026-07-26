@@ -26,7 +26,14 @@
  - push the file to your repo.
 
 ## Exercise
-- pressure value: 
+- pressure value:
 - led blinks when:
 - led is constant when:
 - buzzer plays when: 
+
+## Answers:
+- pressure value: 100411
+- led blinks when: long press on the button 
+- led is constant when: we enters the option menu after long press on the button
+- buzzer plays when: entering the options menu 
+
