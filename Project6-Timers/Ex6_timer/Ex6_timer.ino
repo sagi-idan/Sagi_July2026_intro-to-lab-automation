@@ -33,4 +33,5 @@ void buttonISR() {
 void TurnOff()
 {
   digitalWrite(ledPin, LOW);
+  MsTimer2::stop();
 }
