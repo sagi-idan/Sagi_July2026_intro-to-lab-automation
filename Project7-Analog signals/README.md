@@ -18,10 +18,12 @@ The purpose of this project is to dim and increase the led light using the rotar
 - pin 4 (grove LED) is not supported for PWM. Install package MD_PWM, and set pin 4 to be PWM using the package documentation.
 - Using the rotary value, update the PWM value. Note the range of values that can be used according to package documentation. Change your code accordingly.
 - test your code.
-- View in scope: Connect Analog 2 (dark blue) to pin 4 in arduino (LED output). Play with the times and triggers until you see the PWM change when turning the rotary.  What is the duty cycle?
+- View in scope: Connect Analog 2 (dark blue) to pin 4 in arduino (LED output). Play with the times and triggers until you see the PWM change when turning the rotary.  What is the duty cycle?  200Hz
 - View in voltmeter - stop scope first. See the average voltage change. What does it mean?
-- what happens when using 30Hz instead of 50Hz for the PWM?
+- what happens when using 30Hz instead of 50Hz for the PWM? the time cycles of the PWM signals.
 - paste a screenshot of the oscilloscope where both the rotary potentiometer signal and the PWM signal on the led are seen.
+
+![dimmer_meanV_PWM_screenshot](dimmer_meanV_PWM_screenshot-1.png)
 
 ## Use PWM to control a servo motor
 
@@ -30,12 +32,18 @@ Documentation on Servo [here](https://wiki.seeedstudio.com/Grove-Servo/)
 - connect analog 2 in adalm (dark blue) to digital 7 in arduino
 - install Servo package if not already installed
 - initialize Servo package with pin 7
-- first look at the PWM signal in adalm. What frequency is the Servo package using?
+- first look at the PWM signal in adalm. What frequency is the Servo package using? 50Hz
 - connect to servo using D7 breakout (there is only one way to do this, ground - black wire - close to the grove led). 
 - turn rotary to turn the servo
 - How does the range of the duty cycle in servo motor compare to the range of the duty cycle we used in the LED? Use the scope.
 - is the range of angles in our servo the same as the range of the angles in the Servo package? change the range of values to the servo accordingly.
+
+the servo didn't manage to reach 180 degrees, only 167, so I mapes the rotary values from 0 to 167 degrees.
+the duty cycle is 2.75-11.3%
+
 - Paste a screenshot of the scope showing the maximum duty cycle of the servo (the maximum angle the servo succeeded rotating without problems)
+
+![servo duty cycle](<servo duty cycle-1.png>)
 
 ## Exercises
  - Comparison of AI changes if any:
