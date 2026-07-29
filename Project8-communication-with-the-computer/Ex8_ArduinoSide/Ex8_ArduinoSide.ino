@@ -1,47 +1,90 @@
-const int ledPin = 4;
-const int interruptPin = 2;
-int ledTime = 0;
-
 #include <MsTimer2.h>
 
+// ----------------------
+// Pin definitions
+// ----------------------
+const int LED_PIN = 4;
+const int BUTTON_PIN = 2;
 
-void setup() {
-  pinMode(ledPin, OUTPUT);
-  pinMode(interruptPin, INPUT);
-  digitalWrite(ledPin, LOW);
+// Time (ms) the LED should stay on
+volatile unsigned long ledTime = 1000;
 
+// Indicates whether a valid time was received
+bool timerConfigured = false;
+
+// ------------------------------------------------
+// Setup
+// ------------------------------------------------
+void setup()
+{
+  pinMode(LED_PIN, OUTPUT);
+  pinMode(BUTTON_PIN, INPUT);
+
+  digitalWrite(LED_PIN, LOW);
 
   Serial.begin(9600);
 
-  attachInterrupt(digitalPinToInterrupt(interruptPin), buttonISR, RISING); // attach interrupt to the pin - whaen button pressed run the buttonISR function
+  // Interrupt on button press
+  attachInterrupt(digitalPinToInterrupt(BUTTON_PIN), buttonISR, RISING);
 }
 
-void loop() {
 
-  if (Serial.available() > 0) {
-
-    // Read a number from the serial port
-    String s = Serial.readStringUntil('\n');
-    ledTime = s.toInt();
-
-    // Print what was received
-    Serial.print("I received: ");
-    Serial.println(ledTime);
-  }
-
-  MsTimer2::set(ledTime + 1, TurnOff);
-}
-
-void buttonISR() {
-  MsTimer2::start();
-  digitalWrite(ledPin, HIGH);
-  
-  //digitalWrite(ledPin, LOW);
-  
-}
-
-void TurnOff()
+void loop()
 {
-  digitalWrite(ledPin, LOW);
+  // Check if data arrived
+  if (Serial.available() > 0)
+  {
+    // Read until newline
+    String input = Serial.readStringUntil('\n');
+
+    input.trim();      // Remove spaces/newlines
+
+    long value = input.toInt();
+
+    // Basic validation
+    if (value > 0)
+    {
+      ledTime = value;
+
+      Serial.print("I received: ");
+      Serial.println(ledTime);
+
+      // Configure timer
+      // (+1 ms because of the MsTimer2 timing issue)
+      MsTimer2::set(ledTime + 1, turn_off);
+
+      timerConfigured = true;
+    }
+    else
+    {
+      Serial.println("Invalid input. Enter a positive number.");
+    }
+  }
+}
+
+// ------------------------------------------------
+// Interrupt Service Routine
+// Runs when the button is pressed
+// ------------------------------------------------
+void buttonISR()
+{
+  if (!timerConfigured)
+    return;
+
+  digitalWrite(LED_PIN, HIGH);
+
+  // Start countdown
+  MsTimer2::start();
+}
+
+// ------------------------------------------------
+// Timer callback
+// Turns LED off when timer expires
+// ------------------------------------------------
+void turn_off()
+{
+  digitalWrite(LED_PIN, LOW);
+
+  // Stop timer until next button press
   MsTimer2::stop();
 }
