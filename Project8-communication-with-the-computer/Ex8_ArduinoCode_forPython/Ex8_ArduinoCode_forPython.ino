@@ -62,7 +62,14 @@ void loop()
       Serial.println("Invalid input. Enter a positive number.");
     }
   }
+    bool pressed = digitalRead(BUTTON_PIN);
 
+    if (wasPressed && !pressed)
+    {
+        Serial.println(2);      // Button released
+    }
+
+    wasPressed = pressed;
 
 }
 
@@ -78,6 +85,8 @@ void buttonISR()
 
   digitalWrite(LED_PIN, HIGH);
 
+   Serial.println(1);
+
   // Start countdown
   MsTimer2::start();
 }
@@ -90,6 +99,7 @@ void turn_off()
 {
   digitalWrite(LED_PIN, LOW);
 
+   Serial.println(0);  
 
   // Stop timer until next button press
   MsTimer2::stop();
