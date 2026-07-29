@@ -29,18 +29,25 @@
 Comparison of AI changes if any:
 
 Paste a screenshot of the GUI here:
+![telemetrixGUI](telemetrixGUI-1.png)
+
 
 Paste a screenshot of the logic analyzer here that presents the time the LED is ON when pressing the button.
 
-```
+
+![ledOnTime_telemetrix](ledOnTime_telemetrix-1.png)
+
+I got mean value of 41.4 msec and stdev of 4.1 msec for 30msec of desired ON time 
+
+
 What is the difference between the two versions (with pymata4 and firmata and without) of the script? Which one was easier to code? Where was thread handling easier?
 
-Answer: __________
-
+Answer: Honstly. I used AI for both so the coding was not the issue, the firmata is a bit more interpretable but I dont mind the Arduino code. the firmata version has much more jitter in the msec range which is pretty high for my potential uses in the future 
 
 What can you say about the accuracy of the timing between the firmata version and your arduino code version?
 which one is more accurate and why?
+Firmata is much less accurate 
 
 What are the advantages and disadvantages of using the pymata4 package?
 
-Answer: __________
+Answer: The jitter is definate disadvantage and also the fct that the arduino is no longer stand alone and has to be connected to spesific computer to function. the advantage is a bit more ease for use for prototyping and such.
