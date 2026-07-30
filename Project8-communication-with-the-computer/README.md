@@ -60,4 +60,8 @@ In order to use the conda environment in VSCode, open a python file and then pre
  - Comparison of AI changes if any:
 Paste a screenshot of the GUI here:
 
+![GUI](GUI-2.png)
+
 Paste a screenshot of the logic analyzer here that presents the time the LED is ON when pressing the button.
+
+![30ms_digital signal](<30ms_digital signal-1.png>)
