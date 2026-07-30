@@ -39,5 +39,13 @@ Build a system that:
 
 ## Exercises
 1. paste here the videos (one fo the hardware and one of the GUI).
+
+<video controls src="Project11_exercise1-1.mp4" title="Project11_exercise1"></video>
+
+<video controls src="project11_GUIand Plotting-1.mp4" title="project11_GUIand Plotting"></video>
+
 3. add the csv file to the project. make sure it reflects all the states of the project.
+
+[fan_log](fan_log.csv)
+
 5. If you have multiple folders, write here which is the final version: 
